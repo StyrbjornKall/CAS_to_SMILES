@@ -38,9 +38,10 @@ def main():
 
     print('Joining SMILES...')
     df['SMILES'] = df['SMILES_PC']
+    df.drop(columns=['SMILES_PC'], inplace=True)
     if 'SMILES_CIR' in df.columns:
         df['SMILES'] = df['SMILES'].fillna(df['SMILES_CIR'])
-        df.drop(columns=['SMILES_PC', 'SMILES_CIR'], inplace=True)
+        df.drop(columns=['SMILES_CIR'], inplace=True)
     if 'SMILES_PM' in df.columns:
         df['SMILES'] = df['SMILES'].fillna(df['SMILES_PM'])
         df.drop(columns=['SMILES_PM'], inplace=True)
